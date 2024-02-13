@@ -1,0 +1,16 @@
+
+.footer_container {
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #222;
+    padding: 3em;
+    text-align: center;
+      
+}
+
+footer p 
+{
+    color: #fff;
+}
