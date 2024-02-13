@@ -19,6 +19,9 @@ import soundEffect from '../omnitrix/omnitrixsoundeffects.mp3';
 import omnitrixInUse from '../omnitrix/omnitrixinuse.png'
 import omnitrixdescarregando from '../omnitrix/omnitrixdescarregando.gif'
 import omnitrixdescarregadostatic from '../omnitrix/omnitrixdescarregadostatic.png'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 export default function Omnitrix() {
 
@@ -26,6 +29,7 @@ export default function Omnitrix() {
   const [alien, setAlien] = useState();
   const [argolaClass, setArgolaClass] = useState(styles.argola); // Initial class
   const audioRef = useRef(null);
+  const MySwal = withReactContent(Swal)
 
   const playTimeXToY = (timeX, timeY) => {
     audioRef.current.currentTime = timeX; // Define o tempo de início para 3 segundos
@@ -35,6 +39,15 @@ export default function Omnitrix() {
       audioRef.current.pause();
       audioRef.current.currentTime = 3; // Reinicia o áudio para o início (3 segundos)
     }, timeY); // 3000 milissegundos = 3 segundos
+  };
+
+  const customAlert = (title,text,icon,confirmButton) => {
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      confirmButtonText: confirmButton
+    });
   };
 
   function rotateArgola() {
@@ -63,8 +76,7 @@ export default function Omnitrix() {
   {
     playTimeXToY(8,2500)
     setOpen(omnitrixInUse)
-    setAlien(null)  
- 
+    setAlien(null)   
   }
 
   function unTransform()
@@ -77,6 +89,8 @@ export default function Omnitrix() {
     setTimeout(() => {
         setOpen(initial)
         playTimeXToY(3,1000)
+        customAlert('Nova área desbloqueada!','Gostaria de ir?','success','Ir!')
+
     }, 10000);
   }
 
