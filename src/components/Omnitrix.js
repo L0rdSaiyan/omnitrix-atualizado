@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Omnitrix.module.css';
 import argola from '../omnitrix/omnitrix.png';
 import initial from '../omnitrix/omnitrinxopenimage.png';
@@ -30,6 +31,8 @@ export default function Omnitrix() {
   const [argolaClass, setArgolaClass] = useState(styles.argola); // Initial class
   const audioRef = useRef(null);
   const MySwal = withReactContent(Swal)
+  const navigate = useNavigate();
+
 
   const playTimeXToY = (timeX, timeY) => {
     audioRef.current.currentTime = timeX; // Define o tempo de início para 3 segundos
@@ -41,14 +44,21 @@ export default function Omnitrix() {
     }, timeY); // 3000 milissegundos = 3 segundos
   };
 
-  const customAlert = (title,text,icon,confirmButton) => {
-    Swal.fire({
+  const customAlert = (title, text, icon, confirmButton, redirectRoute) => {
+    MySwal.fire({
       title: title,
       text: text,
       icon: icon,
       confirmButtonText: confirmButton
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (redirectRoute) {
+          navigate(redirectRoute);
+        }
+      }
     });
   };
+
 
   function rotateArgola() {
     setArgolaClass(styles.argola_rotate);
@@ -89,7 +99,7 @@ export default function Omnitrix() {
     setTimeout(() => {
         setOpen(initial)
         playTimeXToY(3,1000)
-        customAlert('Nova área desbloqueada!','Gostaria de ir?','success','Ir!')
+        customAlert('Nova área desbloqueada!', 'Gostaria de ir?', 'success', 'Bora!', '/surprise');
 
     }, 10000);
   }
