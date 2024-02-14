@@ -78,7 +78,7 @@ export default function Omnitrix() {
         setAlien(chama);
         // Chama a função para tocar do segundo 3 ao 6 do áudio
         // Altera a classe da argola para 'styles.rotate'
-      }, 600);
+      }, 700);
     }
   }
 
