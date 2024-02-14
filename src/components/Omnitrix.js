@@ -9,13 +9,13 @@ import chama from '../omnitrix/aliens/chama.png';
 import xlr8 from '../omnitrix/aliens/xlr8.png';
 import diamante from '../omnitrix/aliens/diamante.png';
 import massacinzenta from '../omnitrix/aliens/massa_cinzenta.png'
+import person from "../omnitrix/aliens/torresmo.png"
 import fantasmatico from '../omnitrix/aliens/fantasmatico.png'
 import ultra_t from '../omnitrix/aliens/ultra_t.png'
 import aquatico from '../omnitrix/aliens/aquatico.png'
 import quatro_bracos from '../omnitrix/aliens/four_arms.png'
 import insectoide from '../omnitrix/aliens/insectoide.png'
 import besta from '../omnitrix/aliens/besta.png'
-import person from '../omnitrix/luquinhas.png';
 import soundEffect from '../omnitrix/omnitrixsoundeffects.mp3';
 import omnitrixInUse from '../omnitrix/omnitrixinuse.png'
 import omnitrixdescarregando from '../omnitrix/omnitrixdescarregando.gif'
