@@ -1,41 +1,23 @@
 import React, { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import Card from './Card';
 import styles from './Surprise.module.css';
 import parabensVideo from '../omnitrix/obrisguaido.mp4';
 
 export default function Surprise() {
   const videoRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const playVideo = () => {
       if (videoRef.current) {
         videoRef.current.play().catch((error) => {
+          // A reprodução automática falhou, talvez devido a políticas do navegador
           console.error('Erro na reprodução automática:', error);
         });
       }
-      setTimeout(()=>{
-        redirectToHome()
-      },10000)
-    };
-
-    const redirectToHome = () => {
-      // Redirecionar para a página desejada após 30 segundos
-      window.location.href = 'https://br.skokka.com/';
     };
 
     playVideo();
-
-    // Agendar o redirecionamento após 30 segundos
-    const timeoutId = setTimeout(() => {
-      redirectToHome();
-    }, 30000); // 30 segundos
-
-    // Limpar o timeout se o componente for desmontado antes do tempo
-    return () => clearTimeout(timeoutId);
-  }, [navigate]); // Adicione navigate como dependência
+  }, []); // O useEffect irá disparar uma vez, assim que o componente for montado
 
   return (
     <div className={styles.container}>
